@@ -2,7 +2,7 @@ import discord
 from bs4 import BeautifulSoup
 import requests
 from discord.ext.commands import Bot
-import aiml
+
 
 BOT_PREFIX = ("?", "!", "$")
 TOKEN = "NTg4MDUzMjg1MTM5Nzc1NTY5.XP_mIQ.S9gllAGIgUCv7AZcEB-lofIOX_g"

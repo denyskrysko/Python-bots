@@ -9,18 +9,12 @@ client = commands.Bot(command_prefix="%")
 TOKEN = "NTg4NDY5NDk0MjU5NjQ2NjQy.XQO92Q.e-tlPFsabdgC17uxQZd8auXWLjc"
 kernel = aiml.Kernel()
 if os.path.isfile("bot_brain.brn"):
-    kernel.bootstrap(brainFile = "bot_brain.brn")
+    kernel.bootstrap(brainFile="bot_brain.brn")
 else:
-    kernel.bootstrap(learnFiles = "startup.xml", commands = "load aiml b")
+    kernel.bootstrap(learnFiles="startup.xml", commands="load aiml b")
     kernel.saveBrain("bot_brain.brn")
 
 
-# if os.path.isfile("bot_brain.brn"):
-#     kernel.bootstrap(brainFile = "bot_brain.brn")
-# else:
-#     kernel.bootstrap(learnFiles = "std-startup.xml", commands = "load aiml b")
-#     kernel.saveBrain("bot_brain.brn")
-#
 # while True:
 #     message = raw_input("Enter your message to the bot: ")
 #     if message == "quit":
@@ -29,7 +23,7 @@ else:
 #         kernel.saveBrain("bot_brain.brn")
 #     else:
 #         bot_response = kernel.respond(message)
-        # Do something with bot_response
+# Do something with bot_response
 
 # Greeting
 @client.event
