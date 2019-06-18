@@ -1,19 +1,28 @@
-import aiml
+#!/usr/bin/python3
 import os
-import argparse
+import aiml
 
-parser = argparse.ArgumentParser()
-parser.add_argument("question",help="Go ahead with your question!")
-args = parser.parse_args()
-kernel = aiml.Kernel()
-kernel.verbose(False)
-kernel.setBotPredicate("name", "Rebecca")
-if os.path.isfile("bot_brain.brn"):
-    kernel.bootstrap(brainFile = "bot_brain.brn")
+BRAIN_FILE="brain.dump"
+
+k = aiml.Kernel()
+
+# To increase the startup speed of the bot it is
+# possible to save the parsed aiml files as a
+# dump. This code checks if a dump exists and
+# otherwise loads the aiml from the xml files
+# and saves the brain dump.
+if os.path.exists(BRAIN_FILE):
+    print("Loading from brain file: " + BRAIN_FILE)
+    k.loadBrain(BRAIN_FILE)
 else:
-    kernel.bootstrap(learnFiles = "startup.xml", commands = "'LOAD AIML B")
-    kernel.saveBrain("bot_brain.brn")
+    print("Parsing aiml files")
+    k.bootstrap(learnFiles="startup.aiml", commands="load aiml b")
+    print("Saving brain file: " + BRAIN_FILE)
+    k.saveBrain(BRAIN_FILE)
 
-# kernel now ready for use
-print(kernel.respond(args.question))
-kernel.saveBrain("bot_brain.brn")
+# Endless loop which passes the input to the bot and prints
+# its response
+while True:
+    input_text = input("> ")
+    response = k.respond(input_text)
+    print(response)

@@ -1,30 +1,23 @@
-<aiml version="1.0.1" encoding="UTF-8">
-
+<?xml version = "1.0" encoding = "UTF-8"?>
+<aiml version = "1.0.1" encoding = "UTF-8">
     <category>
-        <pattern>HELLO</pattern>
+        <pattern>СОЗДАТЬ *</pattern>
         <template>
-            <random>
-                <li>Well, hello!</li>
-                <li>How's it going?</li>
-                <li>Yo man!</li>
-                <li>Hi there!</li>
-                <li>What's up?</li>
-                <li>Hello</li>
-            </random>
+            Информация сохранена. Следующие наступление состоиться:
+            <set name="offensive"><star/></set>
         </template>
     </category>
 
     <category>
-        <pattern>MY NAME IS *</pattern>
+        <pattern>КОГДА НАСТУП *</pattern>
         <template>
-            Oh hey <set name="username"><star/></set>
-        </template>
-    </category>
-
-    <category>
-        <pattern>WHAT IS MY NAME</pattern>
-        <template>
-            Your name is <get name="username"/>
+            <think><set name="event"><star/></set></think>
+            <condition name="event">
+                <li value="наступ">Следующие наступление состоиться: <get name="offensive"/></li>
+                <li value="наступление">Следующие наступление состоиться: <get name="offensive"/></li>
+                <li>Когда что? Eще нет информации о <star/>. Возможно вы имели в виду наступление?</li>
+            </condition>
+<!--            Следующие наступление состоиться: <get name="offensive"/>-->
         </template>
     </category>
 

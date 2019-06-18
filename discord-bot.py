@@ -45,26 +45,22 @@ async def help(context):
                 pass_context=True)
 async def stats(context, arg1):
     response = fn_scrape_stats(arg1)
-    if "vinney" in arg1:
-        await context.send(context.message.author.mention +
-                           ', лучше не позориться и не показывать эту стату. Это же {}'.format(arg1))
+    if "HTs:" in response[16][1]:
+        await context.send('Привет ' + context.message.author.mention)
+        await context.channel.send("Статистика игрока {}:\n".format(arg1) +
+                                   response[2][0] + " = " + response[2][1] + "\n" +
+                                   response[0][0] + " = " + response[0][1] + "\n" +
+                                   response[3][0] + " = " + response[3][1] + "\n" +
+                                   response[4][0] + " = " + response[4][1] + "\n" +
+                                   response[5][0] + " = " + response[5][1] + "\n")
     else:
-        if "HTs:" in response[16][1]:
-            await context.send('Привет ' + context.message.author.mention)
-            await context.channel.send("Статистика игрока {}:\n".format(arg1) +
-                                       response[2][0] + " = " + response[2][1] + "\n" +
-                                       response[0][0] + " = " + response[0][1] + "\n" +
-                                       response[3][0] + " = " + response[3][1] + "\n" +
-                                       response[4][0] + " = " + response[4][1] + "\n" +
-                                       response[5][0] + " = " + response[5][1] + "\n")
-        else:
-            await context.send('Привет ' + context.message.author.mention)
-            await context.channel.send("Статистика игрока {}:\n".format(arg1) +
-                                       response[2][0] + " = " + response[2][1] + "\n" +
-                                       response[0][0] + " = " + response[0][1] + "\n" +
-                                       response[3][0] + " = " + response[3][1] + "\n" +
-                                       response[4][0] + " = " + response[4][1] + "\n" +
-                                       response[5][0] + " = " + response[5][1] + "\n")
+        await context.send('Привет ' + context.message.author.mention)
+        await context.channel.send("Статистика игрока {}:\n".format(arg1) +
+                                   response[2][0] + " = " + response[2][1] + "\n" +
+                                   response[0][0] + " = " + response[0][1] + "\n" +
+                                   response[3][0] + " = " + response[3][1] + "\n" +
+                                   response[4][0] + " = " + response[4][1] + "\n" +
+                                   response[5][0] + " = " + response[5][1] + "\n")
 
 
 # Show Tanks
