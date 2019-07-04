@@ -1,48 +1,42 @@
-import datetime
-import discord
 from discord.ext import commands
 import aiml
-import os
+from datetime import datetime
+from datetime import timedelta
 
 
 client = commands.Bot(command_prefix="%")
 TOKEN = "NTg4NDY5NDk0MjU5NjQ2NjQy.XQO92Q.e-tlPFsabdgC17uxQZd8auXWLjc"
 kernel = aiml.Kernel()
-# kernel.learn("brain.aiml")
+kernel.learn("brain.aiml")
 
-BRAIN_FILE="brain.dump"
-if os.path.exists(BRAIN_FILE):
-    print("Loading from brain file: " + BRAIN_FILE)
-    kernel.loadBrain(BRAIN_FILE)
-else:
-    print("Parsing aiml files")
-    kernel.bootstrap(learnFiles="startup.xml", commands="load aiml b")
-    print("Saving brain file: " + BRAIN_FILE)
-    kernel.saveBrain(BRAIN_FILE)
 
-# Greeting
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
 
-    await client.process_commands(message)
-
-    # AI starts here
     channel = message.channel
+    await client.process_commands(message)
+    now = datetime.now().strftime('%d-%m-%y %H:%M')
+    user_input = datetime.strptime(message.content, '%d-%m-%y %H:%M')
+    first_notific = user_input - timedelta(minutes=5)
+    second_notific = user_input - timedelta(minutes=15)
+    print(now)
+    print(user_input)
+    print(first_notific)
+    # print(datetime.strptime(second_notific, '%d-%m-%y %H:%M'))
     try:
-        if message.content == "load aiml b":
-            print("------------------")
-            print("Parsing aiml files")
-            kernel.bootstrap(learnFiles="startup.xml", commands="load aiml b")
-            print("Saving brain file: " + BRAIN_FILE)
-            kernel.saveBrain(BRAIN_FILE)
-            print("------------------")
-        else:
-            await channel.send(kernel.respond(message.content))
-            print(kernel.respond(message.content))
+        if now == first_notific:
+            await channel.send("test 5 min - " + str(first_notific))
+            # await channel.send(kernel.respond(message.content))
+        if now == second_notific:
+            await channel.send("test 15 min - " + str(second_notific))
     except:
         print("Hit an error")
 
 
 client.run(TOKEN)
+
+
+
+

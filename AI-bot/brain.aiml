@@ -1,24 +1,37 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <aiml version = "1.0.1" encoding = "UTF-8">
+
     <category>
-        <pattern>СОЗДАТЬ *</pattern>
+        <pattern>СОЗДАТЬ НАСТУП *</pattern>
         <template>
-            Информация сохранена. Следующие наступление состоиться:
             <set name="offensive"><star/></set>
         </template>
     </category>
 
     <category>
-        <pattern>КОГДА НАСТУП *</pattern>
+        <pattern>КОГДА НАСТУП</pattern>
         <template>
-            <think><set name="event"><star/></set></think>
-            <condition name="event">
-                <li value="наступ">Следующие наступление состоиться: <get name="offensive"/></li>
-                <li value="наступление">Следующие наступление состоиться: <get name="offensive"/></li>
-                <li>Когда что? Eще нет информации о <star/>. Возможно вы имели в виду наступление?</li>
-            </condition>
-<!--            Следующие наступление состоиться: <get name="offensive"/>-->
+<!--            <think><set name="event"><star/></set></think>-->
+<!--            <condition name="event">-->
+            Следующие наступление состоиться: <get name="offensive"/>
+<!--            <li value="наступление">Следующие наступление состоиться: <get name="offensive"/></li>-->
+<!--            </condition>-->
         </template>
+    </category>
+
+    <category>
+        <pattern>НАСТУП БУДЕТ</pattern>
+        <template>Следующие наступление состоиться: <get name="offensive"/></template>
+    </category>
+
+    <category>
+        <pattern>А КОГДА НАСТУП</pattern>
+        <template>Следующие наступление состоиться: <get name="offensive"/></template>
+    </category>
+
+    <category>
+        <pattern>НАСТУПЛЕНИЕ</pattern>
+        <template>Следующие наступление состоиться: <get name="offensive"/></template>
     </category>
 
 </aiml>

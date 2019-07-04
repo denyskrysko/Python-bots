@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<aiml version = "1.0.1" encoding = "UTF-8">
+
+    <category>
+        <pattern>WHAT ARE YOU</pattern>
+        <template>I am <set name="topic">bot</set></template>
+    </category>
+
+    <topic name="bot">
+        <category>
+            <pattern>WHAT YOU CAN DO</pattern>
+            <template>I can show you something</template>
+        </category>
+
+        <category>
+            <pattern>OK</pattern>
+            <that>I can show you something</that>
+            <template>My dick</template>
+        </category>
+    </topic>
+</aiml>

@@ -7,7 +7,7 @@
                 <learn>math.aiml</learn>
                 <learn>brain.aiml</learn>
                 <learn>brain2.aiml</learn>
-                <learn>std-atomic.aiml</learn>
+                <learn>general.aiml</learn>
                 <learn>std-botmaster.aiml</learn>
                 <learn>std-brain.aiml</learn>
                 <learn>std-connect.aiml</learn>

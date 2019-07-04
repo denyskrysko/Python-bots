@@ -67,8 +67,8 @@ stock_target = input("What is the Stock target? ")
 
 counter = 0  # creating global variable for the report function
 
-# schedule.every().day.at("16:50").do(report())
-# schedule.every().day.at("13:30").do(report())
+# schedule.every().day.at("16:50").do(report)
+# schedule.every().day.at("13:30").do(report)
 
 while True:
     schedule.run_pending()
